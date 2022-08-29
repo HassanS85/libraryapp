@@ -1,37 +1,55 @@
 package org.example;
 
-import java.util.ArrayList;
-import java.util.Scanner;
+import com.opencsv.CSVReader;
+import com.opencsv.exceptions.CsvException;
 
-public class Main {
-    public static void main(String[] args) {
-        // 1. Create a new library for us to interact with
-        ArrayList<Librarian> librarians = new ArrayList<Librarian>(0);
-        ArrayList<Member> members = new ArrayList<Member>(0);
-        ArrayList<BookItem> availableBooks = new ArrayList<BookItem>(0);
-        ArrayList<BookItem> rentedBooks = new ArrayList<BookItem>(0);
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Arrays;
+import java.util.List;
 
-        Library library = new Library( librarians, members, availableBooks,  rentedBooks);
+    public class Main {
 
-        // 2. Populate some available books in our library
-        String fileName = "C:\\Users\\User\\Desktop\\books_data.csv";
+        public static void main(String[] args) throws IOException, CsvException {
+            
+            Member member1 = new Member(123456,"Seth","39 Brooklyn Works", "hassan@test.com", new LibraryCard(true));
+            Member member2 = new Member(123455,"Dean","6a Sylvester Street", "Joe@test.com", new LibraryCard(true));
+            Member member3 = new Member(123454,"Roman","26 The Friary", "Moe@test.com", new LibraryCard(false));
+
+            Library library = null;
+            library.addMember(member1);
+            library.addMember(member2);
+            library.addMember(member3);
+
+            Librarian librarian1 = new Librarian(636463,"Charlotte","", "Charlotte@thelibrary.com");
+            Librarian librarian2 = new Librarian(857323,"Sasha","", "Sasha@ggnoremail.com");
+            Librarian librarian3 = new Librarian(902578,"Bianca","", "Bianca@ggnoremail.com");
+
+            library.addLibrarian(librarian1);
+            library.addLibrarian(librarian2);
+            library.addLibrarian(librarian3);
+
+            String fileName = "C:\\Users\\User\\Desktop\\books_data.csv";
 
 
-        Member member1 = new Member(123456,"Seth","39 Brooklyn Works", "hassan@test.com", new LibraryCard(true));
-        Member member2 = new Member(123455,"Dean","6a Sylvester Street", "Joe@test.com", new LibraryCard(true));
-        Member member3 = new Member(123454,"Roman","26 The Friary", "Moe@test.com", new LibraryCard(false));
+            List<String[]> r;
+            try (CSVReader reader = new CSVReader(new FileReader(fileName))) {
+                r = reader.readAll();
+            }
 
-        library.addMember(member1);
-        library.addMember(member2);
-        library.addMember(member3);
+            int listIndex = 0;
+            for (String[] arrays : r) {
+                System.out.println("\nPrice[" + listIndex++ + "] : " + Arrays.toString(arrays));
 
-        Librarian librarian1 = new Librarian(636463,"Charlotte","", "Charlotte@thelibrary.com");
-        Librarian librarian2 = new Librarian(857323,"Sasha","", "Sasha@ggnoremail.com");
-        Librarian librarian3 = new Librarian(902578,"Bianca","", "Bianca@ggnoremail.com");
+                int index = 0;
+                for (String array : arrays) {
+                    System.out.println(index++ + " : " + array);
+                }
 
-        library.addLibrarian(librarian1);
-        library.addLibrarian(librarian2);
-        library.addLibrarian(librarian3);
+            }
+        }
+
+       
     }
 
 
