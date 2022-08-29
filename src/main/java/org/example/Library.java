@@ -15,5 +15,29 @@ public class Library {
         this.availableBooks = availableBooks;
         this.rentedBooks = rentedBooks;
     }
+    //    Methods
+    public boolean isAvailable(BookItem book) {
+        return availableBooks.contains(book);
+    }
+
+    public void addAvailableBook(BookItem book) {
+        availableBooks.add(book);
+    }
+
+    public void removeAvailableBook(BookItem book) {
+        availableBooks.remove(book);
+    }
+
+    public void addRentedBook(BookItem book) {
+        rentedBooks.add(book);
+    }
+
+    public void addMember(Member newMember) {
+        members.add(newMember);
+    }
+
+    public void addLibrarian(Librarian newLibrarian) {
+        librarians.add(newLibrarian);
+    }
 
 }

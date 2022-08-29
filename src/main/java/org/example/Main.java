@@ -17,10 +17,6 @@ public class Main {
         String fileName = "C:\\Users\\User\\Desktop\\books_data.csv";
 
 
-        library.addAvailableBook(bookItem1);
-        library.addAvailableBook(bookItem2);
-        library.addRentedBook(bookItem3);
-
         Member member1 = new Member(123456,"Seth","39 Brooklyn Works", "hassan@test.com", new LibraryCard(true));
         Member member2 = new Member(123455,"Dean","6a Sylvester Street", "Joe@test.com", new LibraryCard(true));
         Member member3 = new Member(123454,"Roman","26 The Friary", "Moe@test.com", new LibraryCard(false));
@@ -37,22 +33,7 @@ public class Main {
         library.addLibrarian(librarian2);
         library.addLibrarian(librarian3);
     }
-     //(Scanner) Get a book name, find a book matching this name
-        System.out.println("Enter the book you are looking for.");
-    String bookTitleToLookFor = scanner.nextLine();
 
-    BookItem bookByTitle = null;
-    String wantedBookName = null;
-
-        try {
-        bookByTitle = library.getBookByTitle(bookTitleToLookFor);
-        wantedBookName = bookByTitle.getName();
-        String bookByTitleAuthor = bookByTitle.getAuthor();
-        long bookByTitleISBN = bookByTitle.getISBN();
-        System.out.println("The book you are looking for, " + wantedBookName + ", by " + bookByTitleAuthor + ", has ISBN " + bookByTitleISBN + ".");
-    } catch (Exception error) {
-        System.out.println(error);
-    }
 
 
 }
