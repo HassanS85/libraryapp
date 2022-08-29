@@ -1,6 +1,7 @@
 package org.example;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
@@ -36,4 +37,22 @@ public class Main {
         library.addLibrarian(librarian2);
         library.addLibrarian(librarian3);
     }
+     //(Scanner) Get a book name, find a book matching this name
+        System.out.println("Enter the book you are looking for.");
+    String bookTitleToLookFor = scanner.nextLine();
+
+    BookItem bookByTitle = null;
+    String wantedBookName = null;
+
+        try {
+        bookByTitle = library.getBookByTitle(bookTitleToLookFor);
+        wantedBookName = bookByTitle.getName();
+        String bookByTitleAuthor = bookByTitle.getAuthor();
+        long bookByTitleISBN = bookByTitle.getISBN();
+        System.out.println("The book you are looking for, " + wantedBookName + ", by " + bookByTitleAuthor + ", has ISBN " + bookByTitleISBN + ".");
+    } catch (Exception error) {
+        System.out.println(error);
+    }
+
+
 }
