@@ -15,3 +15,5 @@ public class Library {
         this.availableBooks = availableBooks;
         this.rentedBooks = rentedBooks;
     }
+
+}
