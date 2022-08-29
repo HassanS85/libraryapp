@@ -15,5 +15,11 @@ public class Main {
         // 2. Populate some available books in our library
         String fileName = "C:\\Users\\User\\Desktop\\books_data.csv";
 
+
+        library.addAvailableBook(bookItem1);
+        library.addAvailableBook(bookItem2);
+        library.addRentedBook(bookItem3);
+
+
     }
 }
